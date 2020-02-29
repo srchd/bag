@@ -22,10 +22,12 @@ private:
 	std::vector<T_comm> _vec;
 	bool is_exist(int num) const;
 	int index_of_element(int num) const;
+	bool is_empty() const;
 public:
 	enum error{EMPTY_BAG, NON_EXIST_NUMBER};
-	void add_element(const T_comm& item);
+	void add_element(int num);
 	void remove_element(const T_comm& item);
+	void clear_bag();
 	int how_many(int num) const;
 	int get_most_common() const;
 };
