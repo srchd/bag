@@ -10,7 +10,7 @@ std::istream& operator>>(std::istream& is, T_comm& item) {
 	return is;
 }
 bool Bag::is_empty() const {
-	return _vec.size == 0;
+	return (_vec.size() == 0);
 }
 bool Bag::is_exist(int num) const {
 	for (T_comm x : _vec) {
