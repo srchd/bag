@@ -30,6 +30,7 @@ public:
 	void clear_bag();
 	int how_many(int num) const;
 	int get_most_common() const;
+	void print_that_baggie_bag() const;
 };
 
 #endif // !BAG_H

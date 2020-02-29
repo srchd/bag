@@ -20,22 +20,29 @@ bool Bag::is_exist(int num) const {
 	return false;
 }
 int Bag::index_of_element(int num) const {
-	if (!is_exist(num))
-		throw NON_EXIST_NUMBER;
+	/*if (!is_exist(num))
+		throw NON_EXIST_NUMBER;*/
+	int index = 0;
 	for (unsigned int i = 0; i < _vec.size(); i++) {
 		if (_vec[i].number == num)
-			return i;
+			index = i;
 	}
+	return index;
 }
 void Bag::clear_bag() {
 	_vec.clear();
+}
+void Bag::print_that_baggie_bag() const {
+	for (T_comm x : _vec) {
+		std::cout << x << std::endl;
+	}
 }
 void Bag::add_element(int num) {
 
 	if (!is_exist(num)) {	
 		T_comm item;		
 		item.number = num;
-		item.times = 0;
+		item.times = 1;
 		_vec.push_back(item);
 	}
 	else {
