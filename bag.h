@@ -31,4 +31,3 @@ public:
 };
 
 #endif // !BAG_H
-
