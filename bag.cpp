@@ -9,17 +9,17 @@ std::istream& operator>>(std::istream& is, T_comm& item) {
 	is >> item.number;
 	return is;
 }
-bool Bag::is_empty() const {
+bool Bag::is_empty() const { //private
 	return (_vec.size() == 0);
 }
-bool Bag::is_exist(int num) const {
+bool Bag::is_exist(int num) const { //private
 	for (T_comm x : _vec) {
 		if (x.number == num)
 			return true;
 	}
 	return false;
 }
-int Bag::index_of_element(int num) const {
+int Bag::index_of_element(int num) const { //private
 	/*if (!is_exist(num))
 		throw NON_EXIST_NUMBER;*/
 	int index = 0;
@@ -33,6 +33,8 @@ void Bag::clear_bag() {
 	_vec.clear();
 }
 void Bag::print_that_baggie_bag() const {
+	if (is_empty())
+		throw EMPTY_BAG;
 	for (T_comm x : _vec) {
 		std::cout << x << std::endl;
 	}
