@@ -6,7 +6,7 @@
 
 
 std::ostream& operator<<(std::ostream& os, const T_comm& item) {
-	os << "Number: " << item.number << " Occurrence: " << item.times;
+	os << "Number: " << item.number << " Occurrences: " << item.times;
 	return os;
 }
 std::istream& operator>>(std::istream& is, T_comm& item) {
@@ -86,10 +86,16 @@ T_comm Bag::remove_element(const int item) {
 		throw NOT_AN_ELEMENT;
 	int ind = index_of_element(item);
 	T_comm result = _vec[ind];
-	_vec[ind] = _vec.back();
-	_vec.pop_back();
+	if (result.times == 1) {
+		_vec[ind] = _vec.back();
+		_vec.pop_back();
+	}
+	else {
+		result.times--;
+		_vec[ind] = result;
+	}
 	return result;
 }
-void Bag::add_element(const T_comm& item) {
+void Bag::add_element(const T_comm& item) { //ezt csak tesztelési célra hoztam létre!!!
 	_vec.push_back(item);
 }

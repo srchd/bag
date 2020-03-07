@@ -29,7 +29,7 @@ public:
 	//Bag(std::vector<T_comm> _vec) : _vec(_vec) {};
 	enum error{EMPTY_BAG, NOT_AN_ELEMENT};
 	void add_element(const int num); //szándékosan van 2 'add_element' function, mert fájlból csak egy véges hosszú szám-sorozatot
-	void add_element(const T_comm& item); // olvas be, majd megszámolja hányszor van bent
+	void add_element(const T_comm& item); // olvas be, majd megszámolja hányszor van bent, utóbbi fgv. kizárólag tesztelési célra lett létrehozva
 	T_comm remove_element(const int item);
 	void clear_bag();
 	T_comm how_many(int num) const;
