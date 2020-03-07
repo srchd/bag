@@ -1,15 +1,19 @@
 #include "bag.h"
 #include <iostream>
 
+//Author: Sipos Richard
+//Neptun: K9P7QZ
+
+
 std::ostream& operator<<(std::ostream& os, const T_comm& item) {
-	os << "Number: " << item.number << " Incidence: " << item.times;
+	os << "Number: " << item.number << " Occurrence: " << item.times;
 	return os;
 }
 std::istream& operator>>(std::istream& is, T_comm& item) {
 	is >> item.number;
 	return is;
 }
-bool Bag::is_empty() const { //private
+bool Bag::is_empty() const {
 	return (_vec.size() == 0);
 }
 bool Bag::is_exist(int num) const { //private
@@ -52,22 +56,40 @@ void Bag::add_element(int num) {
 		_vec[ind].times++;
 	}
 }
-int Bag::how_many(int num) const{
+T_comm Bag::how_many(int num) const{
 	if (!is_exist(num))
-		throw NON_EXIST_NUMBER;
+		throw NOT_AN_ELEMENT;
+	T_comm result;
+	result.number = num;
 	int ind = index_of_element(num);
-	return _vec[ind].times;
+	result.times = _vec[ind].times;
+	return result;
 }
-int Bag::get_most_common() const {
+T_comm Bag::get_most_common() const {
 	if (is_empty())
 		throw EMPTY_BAG;
-	int max = _vec[0].times;
-	int max_num = _vec[0].number;
+	T_comm result;
+	result.times = _vec[0].times;
+	result.number = _vec[0].number;
 	for (T_comm x : _vec) {
-		if (x.times > max) {
-			max = x.times;
-			max_num = x.number;
+		if (x.times > result.times) {
+			result.times = x.times;
+			result.number = x.number;
 		}
 	}
-	return max_num;
+	return result;
+}
+T_comm Bag::remove_element(const int item) {
+	if (is_empty())
+		throw EMPTY_BAG;
+	if (!is_exist(item))
+		throw NOT_AN_ELEMENT;
+	int ind = index_of_element(item);
+	T_comm result = _vec[ind];
+	_vec[ind] = _vec.back();
+	_vec.pop_back();
+	return result;
+}
+void Bag::add_element(const T_comm& item) {
+	_vec.push_back(item);
 }

@@ -152,6 +152,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="bag.h" />
+    <ClInclude Include="catch.hpp" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="numbers.txt" />
